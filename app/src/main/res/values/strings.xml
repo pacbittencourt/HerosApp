@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Heros</string>
-    <string name="create_hero">Criar Herói!</string>
+    <string name="create_hero">Criar Herói</string>
+    <string name="create_user">Cadastre se</string>
+    <string name="login">Entrar</string>
+    <string name="logout">Sair</string>
+
 </resources>
