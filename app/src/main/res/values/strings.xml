@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Heros</string>
+    <string name="create_hero">Criar Herói!</string>
 </resources>
