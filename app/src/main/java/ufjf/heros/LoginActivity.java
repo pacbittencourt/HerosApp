@@ -75,6 +75,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
+        btCadastro = (Button) findViewById(R.id.btCadastro);
+
         btCadastro.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
