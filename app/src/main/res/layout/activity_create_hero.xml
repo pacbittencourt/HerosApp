@@ -44,7 +44,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Identidade Secreta"/>
+                android:text="Alter ego"/>
 
             <EditText
                 android:id="@+id/edtSecretName"
@@ -89,12 +89,14 @@
             <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:id="@+id/radioSex">
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Masculino"/>
+                    android:text="Masculino"
+                    />
 
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -132,6 +134,7 @@
                 android:text="Descrição"/>
 
             <EditText
+                android:id="@+id/edtDescription"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
         </LinearLayout>
@@ -144,6 +147,7 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/btnCriarHero"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
