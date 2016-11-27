@@ -2,6 +2,7 @@ package ufjf.heros;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ public class ItemHeroAdapter extends RecyclerView.Adapter<ItemHeroAdapter.ItensV
 
     private final Context context;
     private final List<Hero> heros;
+    private static MyClickListener myClickListener;
 
     public ItemHeroAdapter(Context context, List<Hero> heros) {
         this.context = context;
@@ -37,6 +39,8 @@ public class ItemHeroAdapter extends RecyclerView.Adapter<ItemHeroAdapter.ItensV
         holder.txtName.setText(hero.getName());
         holder.txtSecretName.setText(hero.getSecret_id());
         holder.txtAge.setText(hero.getAge());
+
+
     }
 
     @Override
@@ -44,7 +48,7 @@ public class ItemHeroAdapter extends RecyclerView.Adapter<ItemHeroAdapter.ItensV
         return this.heros != null ? this.heros.size() : 0;
     }
 
-    public static class ItensViewHolder extends RecyclerView.ViewHolder {
+    public static class ItensViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView txtName;
         public TextView txtSecretName;
@@ -56,6 +60,22 @@ public class ItemHeroAdapter extends RecyclerView.Adapter<ItemHeroAdapter.ItensV
             txtName = (TextView) itemView.findViewById(R.id.txtName);
             txtSecretName = (TextView) itemView.findViewById(R.id.txtSecretName);
             txtAge = (TextView) itemView.findViewById(R.id.txtAge);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            myClickListener.onItemClick(getAdapterPosition(), view);
         }
     }
+
+    public void setOnItemClickListener(MyClickListener myClickListener) {
+        this.myClickListener = myClickListener;
+    }
+
+    public interface MyClickListener {
+        public void onItemClick(int position, View v);
+    }
+
 }

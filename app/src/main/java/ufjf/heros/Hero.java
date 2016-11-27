@@ -3,6 +3,7 @@ package ufjf.heros;
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +13,7 @@ import java.util.Map;
  */
 
 @IgnoreExtraProperties
-public class Hero {
+public class Hero implements Serializable {
 
     private String emailCreator;
     private String name;

@@ -22,7 +22,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final int CREATE_HERO_REQUEST = 1;
+    public final int CREATE_HERO_REQUEST = 1;
+    public static final String HERO_TAG = "hero_tag";
 
     private Button btnCreateHeroActivity;
 
@@ -91,10 +92,20 @@ public class MainActivity extends AppCompatActivity {
         };
 
         myRef.addChildEventListener(childEventListener);
+        mAdapter.setOnItemClickListener(new ItemHeroAdapter.MyClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+                abrirDetalhesHeroi(position);
+            }
+        });
     }
 
-
-
+    private void abrirDetalhesHeroi(int position) {
+        Hero hero = heros.get(position);
+        Intent it = new Intent(this,DetalhesHero.class);
+        it.putExtra(HERO_TAG,hero);
+        startActivity(it);
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
