@@ -73,14 +73,14 @@ public class LoginActivity extends AppCompatActivity {
 
     private void signInUser(String email, String senha) {
         if (!validarDados(email, senha)) {
-            Toast.makeText(this, "Email e/ou senha inválido(s)", Toast.LENGTH_LONG);
+            Toast.makeText(this, "Email e/ou senha inválido(s)", Toast.LENGTH_LONG).show();
         } else {
             final Context t = this;
             mAuth.signInWithEmailAndPassword(email, senha).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (!task.isSuccessful()) {
-                        Toast.makeText(t, "Usuário e/ou senha incorreto(s). Tente novamente", Toast.LENGTH_LONG);
+                        Toast.makeText(t, "Usuário e/ou senha incorreto(s). Tente novamente", Toast.LENGTH_LONG).show();
                     } else {
                         Intent it = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(it);
