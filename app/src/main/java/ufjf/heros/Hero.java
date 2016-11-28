@@ -22,6 +22,9 @@ public class Hero implements Serializable {
     private String description;
     private String sex;
     private String age;
+    private int comicsAmount;
+
+
 
     public Hero() {
         // Default constructor required for calls to DataSnapshot.getValue(Hero.class)
@@ -49,6 +52,14 @@ public class Hero implements Serializable {
         result.put("age",age);
 
         return result;
+    }
+
+    public int getComicsAmount() {
+        return comicsAmount;
+    }
+
+    public void setComicsAmount(int comicsAmount) {
+        this.comicsAmount = comicsAmount;
     }
 
     public String getEmailCreator() {

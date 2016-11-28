@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String HERO_TAG = "hero_tag";
 
     private Button btnCreateHeroActivity;
+    private Button btBuscarMarvel;
 
     private RecyclerView recyclerView;
     private List<Hero> heros;
@@ -54,6 +55,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent it = new Intent(view.getContext(), CreateHeroActivity.class);
                 startActivityForResult(it, CREATE_HERO_REQUEST);
+            }
+        });
+
+        Button btBuscarMarvel = (Button) findViewById(R.id.btBuscarMarvel);
+        btBuscarMarvel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(v.getContext(), MarvelQueryActivity.class);
+                startActivity(it);
             }
         });
 

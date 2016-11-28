@@ -9,19 +9,69 @@
               android:paddingRight="@dimen/activity_horizontal_margin"
               android:paddingTop="@dimen/activity_vertical_margin"
               android:orientation="vertical"
-              tools:context="ufjf.heros.MarvelQueryActivity">
+              tools:context="ufjf.heros.MarvelQueryActivity"
+    android:weightSum="1">
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Nome do heroi"
         android:ems="10"
-        android:id="@+id/txtHero"/>
+        android:id="@+id/txtHero"
+        tools:text="Nome do heroi" />
 
     <Button
         android:text="Pesquisar heroi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btPesquisar"/>
+
+    <TextView
+        android:text="Nome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/labelNome"
+        tools:textStyle="bold"
+        android:visibility="invisible"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtNome"
+        android:layout_marginBottom="10dp" />
+
+    <TextView
+        android:text="Descrição"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/labelDesc"
+        android:textStyle="bold"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtDescricao"
+        android:layout_margin="10dp" />
+
+    <TextView
+        android:text="Número de quadrinhos disponíveis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/labelQuad"
+        android:textStyle="bold"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtNumSeries"
+        android:layout_marginBottom="10dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtCopyright" />
+
 </LinearLayout>
