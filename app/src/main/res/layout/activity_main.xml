@@ -14,22 +14,27 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="0.86"
+        android:layout_weight="1"
         />
 
-
-    <Button
-        android:id="@+id/btnCreateHeroActivity"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/create_hero"
-        />
+        >
 
-    <Button
-        android:text="Buscar heroi na Marvel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btBuscarMarvel" />
+        <Button
+            android:id="@+id/btBuscarMarvel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buscar heroi na Marvel"/>
+        <Button
+            android:id="@+id/btnCreateHeroActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create_hero"
+            />
+    </LinearLayout>
+
 
 </LinearLayout>

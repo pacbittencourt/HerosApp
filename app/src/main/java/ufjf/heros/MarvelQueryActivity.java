@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +26,8 @@ public class MarvelQueryActivity extends AppCompatActivity {
     private Button btPesquisa;
     private EditText txtHero;
     private TextView labelNome, labelDesc, labelQuad;
-    private TextView txtNome, txtDescricao, txtNumQuadrinhos, txtCopyright;
+    private TextView txtNome, txtDescricao, txtNumQuadrinhos, txtCopyright, txtErrorLoading;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,9 @@ public class MarvelQueryActivity extends AppCompatActivity {
         txtDescricao = (TextView) findViewById(R.id.txtDescricao);
         txtNumQuadrinhos = (TextView) findViewById(R.id.txtNumSeries);
         txtCopyright = (TextView) findViewById(R.id.txtCopyright);
+        txtErrorLoading = (TextView) findViewById(R.id.txtErrorLoading);
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         btPesquisa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +67,12 @@ public class MarvelQueryActivity extends AppCompatActivity {
         private String URL = "http://gateway.marvel.com:80/v1/public/characters?name=";
 
         String result;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            showProgress(true);
+        }
 
         @Override
         protected Hero doInBackground(String... nomeHeroi) {
@@ -85,13 +96,19 @@ public class MarvelQueryActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Hero r) {
-            labelNome.setVisibility(View.VISIBLE);
-            labelDesc.setVisibility(View.VISIBLE);
-            labelQuad.setVisibility(View.VISIBLE);
-            txtNome.setText(r.getName());
-            txtDescricao.setText(r.getDescription());
-            txtNumQuadrinhos.setText(String.valueOf(r.getComicsAmount()));
-            txtCopyright.setText("Data provided by Marvel. © 2016 MARVEL");
+            showProgress(false);
+            if(r!=null) {
+                showError(false);
+                labelNome.setVisibility(View.VISIBLE);
+                labelDesc.setVisibility(View.VISIBLE);
+                labelQuad.setVisibility(View.VISIBLE);
+                txtNome.setText(r.getName());
+                txtDescricao.setText(r.getDescription());
+                txtNumQuadrinhos.setText(String.valueOf(r.getComicsAmount()));
+                txtCopyright.setText("Data provided by Marvel. © 2016 MARVEL");
+            } else {
+                showError(true);
+            }
         }
 
         public String MD5(String md5) {
@@ -128,6 +145,29 @@ public class MarvelQueryActivity extends AppCompatActivity {
         heroi.setComicsAmount(h.getJSONObject("comics").getInt("available"));
 
         return heroi;
+    }
+
+    private void showProgress(boolean show){
+        if(show) {
+            progressBar.setVisibility(View.VISIBLE);
+        } else {
+            progressBar.setVisibility(View.GONE);
+        }
+    }
+
+    private void showError(boolean show) {
+        if(show) {
+            txtErrorLoading.setVisibility(View.VISIBLE);
+            labelNome.setVisibility(View.INVISIBLE);
+            labelDesc.setVisibility(View.INVISIBLE);
+            labelQuad.setVisibility(View.INVISIBLE);
+            txtNome.setText("");
+            txtDescricao.setText("");
+            txtNumQuadrinhos.setText("");
+            txtCopyright.setText("");
+        } else {
+            txtErrorLoading.setVisibility(View.GONE);
+        }
     }
 
 }
